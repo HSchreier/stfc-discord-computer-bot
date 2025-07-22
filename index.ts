@@ -28,8 +28,8 @@ const openai = new OpenAI({
 });
 
 const easterEggTriggers = [
-  "who are the dras",
-  "tell me about ÐŘÅŠ",
+  "who is r3d1c3",
+  "tell me about r3d1c3",
   "what is demons red ashes",
   "what is dra alliance",
   "who runs dra",
@@ -76,10 +76,8 @@ client.on("messageCreate", async (message: Message) => {
   const normalizedInput = userInput.toLowerCase();
   if (easterEggTriggers.some(trigger => normalizedInput.includes(trigger))) {
     await message.reply(
-      "**🍁 ÐŘÅŠ — Ðemons's Řed ÅŠhes 🍁**\n" +
-      "An elite alliance of fearless captains, strategic minds, and relentless warriors in **Star Trek Fleet Command**.\n" +
-      "Forged in fire, bonded by loyalty, feared across the galaxy. 💥\n\n" +
-      "_'From ashes, we rise.'_ 🔥"
+      "** r3d1c3 **\n" +
+      "Volume One, Issue 7, Phile 3 of 10"
     );
     return;
   }
@@ -91,7 +89,7 @@ client.on("messageCreate", async (message: Message) => {
   if (userInput.toLowerCase() === "help") {
     await message.reply(
       "**🧠 Computer Help**\n" +
-      "I'm your [DRAS] assistant for **Star Trek Fleet Command (STFC)**.\n\n" +
+      "I'm your assistant for **Star Trek Fleet Command (STFC)**.\n\n" +
       "**How to use me:**\n" +
       "• Start any message with `computer`\n" +
       "• Then ask a question about STFC — officers, ships, crew, missions, events, and more!\n\n" +

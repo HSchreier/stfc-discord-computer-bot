@@ -1,6 +1,7 @@
 # 🖖 Star Trek Fleet Command Discord Bot — "Computer"
 
-A custom GPT-powered Discord bot named **"Computer"**, designed exclusively for the **ÐŘÅŠ- Ðemons's Řed ÅŠhes🍁Alliance** Discord server. It answers questions strictly related to the mobile game **Star Trek Fleet Command (STFC)** using OpenAI's GPT-4.
+A custom GPT-powered Discord bot named **"Computer"**
+It answers questions strictly related to the mobile game **Star Trek Fleet Command (STFC)** using OpenAI's GPT-4.
 
 ---
 
@@ -13,7 +14,6 @@ This bot emulates the voice assistant from Star Trek and responds intelligently 
 - 🎯 Purpose-built for **STFC only**
 - 🛡️ Uses a profanity filter powered by the `naughty-words` package
 - 🆘 Includes a built-in `help` command for user guidance
-- 🥚 Easter egg response about ÐŘÅŠ alliance
 
 ---
 
@@ -97,7 +97,6 @@ bun index.ts
 - 🔍 STFC-specific keyword filtering
 - 🚫 Profanity and abuse filtering via `naughty-words`
 - 📘 Built-in help command
-- 🥚 Easter egg for ÐŘÅŠ alliance
 - 🧪 Typed with TypeScript
 - 🧵 Supports only text-based Discord channels
 
@@ -125,26 +124,12 @@ computer help
 
 Returns instructions on how to use the bot, with sample queries and limitations.
 
----
-
-## 🥚 Easter Egg
-
-Typing:
-
-```
-computer who are the dras
-```
-
-Triggers a special message about the **ÐŘÅŠ — Ðemons's Řed ÅŠhes🍁Alliance**.
-
----
 
 ## 🤝 Credits
 
-This bot is developed and maintained for the **ÐŘÅŠ- Ðemons's Řed ÅŠhes🍁Alliance** Discord server — a hub for elite captains in the galaxy of *Star Trek Fleet Command*.
+This bot is developed and maintained by r3d1c3
 
 > *"I'm afraid I can only assist with matters related to Star Trek Fleet Command."* — `Computer`
 
 Live long and prosper. 🖖
 
-Questions? Join our Discord and DM [ĐRĂS]\QuarkCommander — 
