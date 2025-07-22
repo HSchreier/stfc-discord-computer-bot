@@ -1,6 +1,21 @@
+/**
+ * @file index.ts
+ * @description Entry point for the Star Trek Fleet Command Discord bot named "Computer".
+ *              This bot responds only to game-related queries and filters inappropriate messages.
+ *
+ * @module index.ts (main bot handler)
+ * @requires discord.js
+ * @requires openai
+ * @requires dotenv
+ * @requires abuseFilter
+ * @author
+ * @license MIT
+ */
+
 import { Client, GatewayIntentBits, Message, type TextBasedChannel } from "discord.js";
 import { config } from "dotenv";
 import OpenAI from "openai";
+import { isAbusive } from "./abuseFilter";
 
 config();
 
@@ -31,14 +46,6 @@ function isSTFCRelated(input: string): boolean {
   return stfcKeywords.some(keyword => lowerInput.includes(keyword));
 }
 
-function isAbusive(input: string): boolean {
-  const blockedWords = [
-    "fuck", "shit", "bitch", "asshole", "nigger", "faggot", "cunt",
-    "slut", "whore", "retard", "dumbass", "kill yourself" , "gay"
-  ];
-  const lowerInput = input.toLowerCase();
-  return blockedWords.some(word => lowerInput.includes(word));
-}
 
 async function askOpenAI(question: string): Promise<string> {
   const response = await openai.chat.completions.create({
@@ -100,7 +107,7 @@ client.on("messageCreate", async (message: Message) => {
   }
 
   if (isAbusive(userInput)) {
-    await message.reply("That language is inappropriate. Your query has been blocked.");
+    await message.reply("That language is inappropriate. Query blocked.");
     return;
   }
 
