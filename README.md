@@ -31,7 +31,6 @@ computer <your question>
 computer what's the best crew for solo armadas?
 computer how do I unlock the Jellyfish?
 computer help
-computer who are the dras
 ```
 
 ---
