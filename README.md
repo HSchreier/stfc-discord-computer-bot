@@ -11,7 +11,7 @@ This bot emulates the voice assistant from Star Trek and responds intelligently 
 - 💬 Ask about officers, ships, crew synergy, armadas, missions, events, and more
 - 🔐 Filters out abusive or off-topic messages
 - 🎯 Purpose-built for **STFC only**
-- 🛡️ Moderated with keyword filtering and input validation
+- 🛡️ Uses a profanity filter powered by the `naughty-words` package
 - 🆘 Includes a built-in `help` command for user guidance
 - 🥚 Easter egg response about ÐŘÅŠ alliance
 
@@ -96,11 +96,23 @@ bun index.ts
 
 - 🧠 Powered by GPT-4 (OpenAI Chat API)
 - 🔍 STFC-specific keyword filtering
-- 🚫 Profanity and abuse filtering
+- 🚫 Profanity and abuse filtering via `naughty-words`
 - 📘 Built-in help command
 - 🥚 Easter egg for ÐŘÅŠ alliance
 - 🧪 Typed with TypeScript
 - 🧵 Supports only text-based Discord channels
+
+---
+
+## 🛡️ Abuse Filter
+
+This bot uses a precompiled set of English-language profane and inappropriate words via:
+
+- [`naughty-words`](https://www.npmjs.com/package/naughty-words) package
+- Words are loaded into a Set and checked with `.includes()` logic
+- Detected bad input is blocked and the user is notified
+
+The filter can be extended to use remote or multi-language sources in the future.
 
 ---
 
@@ -135,3 +147,5 @@ This bot is developed and maintained for the **ÐŘÅŠ- Ðemons's Řed ÅŠhes�
 > *"I'm afraid I can only assist with matters related to Star Trek Fleet Command."* — `Computer`
 
 Live long and prosper. 🖖
+
+Questions? Join our Discord and DM [ĐRĂS]\QuarkCommander — 
