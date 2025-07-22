@@ -12,6 +12,15 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY!,
 });
 
+const easterEggTriggers = [
+  "who are the dras",
+  "tell me about ÐŘÅŠ",
+  "what is demons red ashes",
+  "what is dra alliance",
+  "who runs dra",
+];
+
+
 function isSTFCRelated(input: string): boolean {
   const stfcKeywords = [
     "star trek fleet command", "stfc", "officer", "crew", "synergy", "armada", "hostile",
@@ -57,9 +66,36 @@ client.on("messageCreate", async (message: Message) => {
   if (message.author.bot || !message.content.toLowerCase().startsWith("computer")) return;
 
   const userInput = message.content.slice("computer".length).trim();
+  const normalizedInput = userInput.toLowerCase();
+  if (easterEggTriggers.some(trigger => normalizedInput.includes(trigger))) {
+    await message.reply(
+      "**🍁 ÐŘÅŠ — Ðemons's Řed ÅŠhes 🍁**\n" +
+      "An elite alliance of fearless captains, strategic minds, and relentless warriors in **Star Trek Fleet Command**.\n" +
+      "Forged in fire, bonded by loyalty, feared across the galaxy. 💥\n\n" +
+      "_'From ashes, we rise.'_ 🔥"
+    );
+    return;
+  }
 
   if (!userInput) {
     await message.reply("Please ask a question related to Star Trek Fleet Command.");
+    return;
+  }
+  if (userInput.toLowerCase() === "help") {
+    await message.reply(
+      "**🧠 Computer Help**\n" +
+      "I'm your [DRAS] assistant for **Star Trek Fleet Command (STFC)**.\n\n" +
+      "**How to use me:**\n" +
+      "• Start any message with `computer`\n" +
+      "• Then ask a question about STFC — officers, ships, crew, missions, events, and more!\n\n" +
+      "**Examples:**\n" +
+      "• `computer what's the best crew for borg armadas?`\n" +
+      "• `computer how do I get jellyfish blueprints?`\n\n" +
+      "**Limits:**\n" +
+      "• I won’t answer non-STFC questions\n" +
+      "• Abusive or off-topic language is blocked\n\n" +
+      "_Live long and prosper. 🖖_"
+    );
     return;
   }
 
