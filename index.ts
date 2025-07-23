@@ -65,10 +65,6 @@ Do not answer general Star Trek trivia, real-world questions, or anything outsid
   return response.choices[0].message.content?.trim() || "I'm unable to respond at this time.";
 }
 
-client.once("ready", () => {
-  console.log(`🖖 Computer is online as ${client.user?.tag}`);
-});
-
 client.on("messageCreate", async (message: Message) => {
   if (message.author.bot || !message.content.toLowerCase().startsWith("computer")) return;
 
@@ -130,11 +126,13 @@ client.login(process.env.DISCORD_TOKEN);
 client.once("ready", async () => {
   console.log(`🖖 Computer is online as ${client.user?.tag}`);
 
-  const channelId = "YOUR_CHANNEL_ID_HERE"; // Replace with your channel ID
+  const channelId = "1339371469666390192"; // Replace with your channel ID
   const channel = await client.channels.fetch(channelId);
 
-  if (channel?.isTextBased() && "send" in channel) {
-    await channel.send("Computer online. Standing by for Starfleet Fleet Command queries.");
+  if (channel?.isTextBased()) {
+    if ("send" in channel) {
+      await channel.send("Computer online. Standing by for Starfleet Fleet Command queries.");
+    }
   } else {
     console.error("🚫 Channel is not text-based or cannot send messages.");
   }
