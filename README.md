@@ -1,135 +1,90 @@
-# 🖖 Star Trek Fleet Command Discord Bot — "Computer"
+# 🖖 STFC Discord Bot - "Computer"
 
-A custom GPT-powered Discord bot named **"Computer"**
-It answers questions strictly related to the mobile game **Star Trek Fleet Command (STFC)** using OpenAI's GPT-4.
+This is a Star Trek Fleet Command (STFC)-focused Discord bot powered by OpenAI, built with TypeScript and Discord.js.
 
----
+## 🔧 Features
 
-## 🎮 What It Does
-
-This bot emulates the voice assistant from Star Trek and responds intelligently to STFC-related questions.
-
-- 💬 Ask about officers, ships, crew synergy, armadas, missions, events, and more
-- 🔐 Filters out abusive or off-topic messages
-- 🎯 Purpose-built for **STFC only**
-- 🛡️ Uses a profanity filter powered by the `naughty-words` package
-- 🆘 Includes a built-in `help` command for user guidance
+- Responds only to Star Trek Fleet Command questions
+- GPT-4 powered Q&A via OpenAI API
+- Abuse filtering and query validation
+- Redis-powered user memory (optional)
+- Easter eggs for community lore
+- Pluggable service-oriented architecture
+- CLI and PM2 ready for production
 
 ---
 
-## 💡 Usage
+## 🚀 Roadmap
 
-In any channel where the bot is active, start your message with:
+### ✅ v1.0 - MVP (Done)
+- Discord bot integration with OpenAI GPT-4
+- Message filtering and abuse detection
+- In-chat help command
+- Keyword-based STFC relevance checking
 
-```
-computer <your question>
-```
+### 🔁 v1.1 - Modularization (Done)
+- Service layer (openAIService, loggerService, memoryService)
+- Configuration via dotenv
+- Redis support for message memory
 
-### 📘 Example Commands
+### 🔍 v1.2 - Observability & Logs (In Progress)
+- Log all message/response pairs to JSONL or PostgreSQL
+- Optional admin metrics (usage count, errors)
+- PM2 logs + optional sentry integration
 
-```
-computer what's the best crew for solo armadas?
-computer how do I unlock the Jellyfish?
-computer help
-```
+### 🌊 v1.3 - Data Lake Integration (Planned)
+- Write messages to `interactions.parquet` and S3-compatible storage
+- Integrate DuckDB for querying chat history
+- Prompt training using past user inputs
+- Export CSV/Parquet for ML training
 
----
+### 🧠 v1.4 - Adaptive Memory & Learning (Planned)
+- Redis for per-user short-term memory
+- Automatic conversation summarization
+- "Teach Computer" command to submit facts
 
-## ⚙️ Setup Instructions
-
-### 1. Requirements
-
-- **Node.js:** v22.14.0
-- **npm:** v10.9.2
-- **Bun:** v1.2.4
-- **OpenAI API Key** (GPT-4 access required)
-- **Discord Bot Token**
-
----
-
-### 2. Clone the Project
-
-```bash
-git clone https://github.com/yourusername/stfc-computer-bot.git
-cd stfc-computer-bot
-```
+### 🌐 v1.5 - Internationalization (Planned)
+- Auto-detect language using GPT or LangDetect
+- Multilingual response support (STFC context only)
+- Community translations for help text and features
 
 ---
 
-### 3. Install Bun (if not already installed)
-
-```bash
-curl -fsSL https://bun.sh/install | bash
-```
-
----
-
-### 4. Install Dependencies
+## 📦 Installation
 
 ```bash
 bun install
+cp .env.example .env
+bun run dev
 ```
 
----
-
-### 5. Configure Environment
-
-Create a `.env` file in the root:
-
-```env
-DISCORD_TOKEN=your_discord_bot_token
-OPENAI_API_KEY=your_openai_api_key
-```
-
----
-
-### 6. Start the Bot
-
-```bash
-bun index.ts
-```
-
----
-
-## 🛠 Features
-
-- 🧠 Powered by GPT-4 (OpenAI Chat API)
-- 🔍 STFC-specific keyword filtering
-- 🚫 Profanity and abuse filtering via `naughty-words`
-- 📘 Built-in help command
-- 🧪 Typed with TypeScript
-- 🧵 Supports only text-based Discord channels
-
----
-
-## 🛡️ Abuse Filter
-
-This bot uses a precompiled set of English-language profane and inappropriate words via:
-
-- [`naughty-words`](https://www.npmjs.com/package/naughty-words) package
-- Words are loaded into a Set and checked with `.includes()` logic
-- Detected bad input is blocked and the user is notified
-
-The filter can be extended to use remote or multi-language sources in the future.
-
----
-
-## 🤖 Help Command
-
-Typing:
+### Required ENV variables
 
 ```
-computer help
+DISCORD_TOKEN=your-bot-token-here
+OPENAI_API_KEY=your-openai-key-here
+REDIS_URL=redis://localhost:6379  # optional
 ```
 
-Returns instructions on how to use the bot, with sample queries and limitations.
+## 📁 Structure
 
+```
+src/
+├── index.ts            # Bot entry point
+├── abuseFilter.ts      # Message filter logic
+├── services/
+│   ├── openaiService.ts
+│   ├── loggerService.ts
+│   └── memoryService.ts
+└── data/               # Interaction logs (JSONL, parquet)
+```
 
-## 🤝 Credits
+## 🤝 Contributing
 
-This bot is developed and maintained by r3d1c3
+Pull requests welcome! Please fork and make your changes in a feature branch.
 
-> *"I'm afraid I can only assist with matters related to Star Trek Fleet Command."* — `Computer`
+## 📜 License
 
-Live long and prosper. 🖖
+MIT – Starfleet regulations approved.
 
+_Live long and prosper 🖖_

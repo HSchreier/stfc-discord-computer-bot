@@ -1,6 +1,6 @@
 {
   "name": "stfc-dras-discord-computer",
-  "module": "index.ts",
+  "module": "src/index.ts",
   "type": "module",
   "private": true,
   "devDependencies": {
@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "discord.js": "^14.21.0",
-    "dotenv": "^17.2.0",
+    "dotenv": "^17.2.1",
+    "ioredis": "^5.6.1",
     "naughty-words": "^1.2.0",
-    "openai": "^5.10.2"
+    "openai": "^5.10.2",
+    "redis": "^5.6.1"
   }
 }
