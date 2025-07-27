@@ -1,28 +1,57 @@
-// openaiService.ts
+import { OpenAI } from 'openai';
+import config from '../config';
+import LoggerService from './LoggerService';
+import MemoryService from './MemoryService';
 
-import OpenAI from "openai";
+class OpenAIService {
+  private static instance: OpenAIService;
+  private openai: OpenAI;
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY!,
-});
-
-export async function askSTFC(question: string): Promise<string> {
-  try {
-    const response = await openai.chat.completions.create({
-      model: "gpt-4",
-      messages: [
-        {
-          role: "system",
-          content: "You are 'Computer' from Star Trek. Only answer questions about Star Trek Fleet Command. Avoid general Star Trek or real-world topics.",
-        },
-        { role: "user", content: question },
-      ],
-      temperature: 0.6,
+  private constructor() {
+    this.openai = new OpenAI({
+      apiKey: config.openaiApiKey,
     });
+  }
 
-    return response.choices[0].message.content?.trim() || "Unable to respond at this time.";
-  } catch (error) {
-    console.error("🔻 OpenAI Error:", error);
-    return "An error occurred while querying Starfleet archives.";
+  public static getInstance(): OpenAIService {
+    if (!OpenAIService.instance) {
+      OpenAIService.instance = new OpenAIService();
+    }
+    return OpenAIService.instance;
+  }
+
+  public async askQuestion(question: string, userId: string): Promise<string> {
+    try {
+      const memoryService = MemoryService.getInstance();
+      const conversationContext = await memoryService.getConversationContext(userId);
+
+      const messages = [
+        { role: 'system', content: config.systemPrompt },
+        ...conversationContext.map(msg => ({ role: 'assistant' as const, content: msg })),
+        { role: 'user', content: question }
+      ];
+
+      // @ts-ignore
+      const response = await this.openai.chat.completions.create({
+        model: config.model,
+        messages,
+        temperature: config.temperature,
+      });
+
+      const reply = response.choices[0].message.content?.trim() || "I'm unable to respond at this time.";
+
+      // Save the conversation context
+      await memoryService.saveConversationContext(
+        userId,
+        [...conversationContext.slice(-4), reply] // Keep last 4 messages for context
+      );
+
+      return reply;
+    } catch (error) {
+      LoggerService.getInstance().error('OpenAI Error:', error);
+      throw error;
+    }
   }
 }
+
+export default OpenAIService;
