@@ -97,7 +97,7 @@ export async function handleMessageCreate(message: Message): Promise<void> {
 
       await message.reply(reply);
 
-      logger.info(`Processed query from ${anonTag}: ${userInput}`);
+      // logger.info(`Processed query from ${anonTag}: ${userInput}`);
     } catch (error) {
       logger.error('Message processing error:', error);
       await message.reply('An error occurred while accessing Starfleet archives.');
