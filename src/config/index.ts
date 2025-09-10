@@ -14,12 +14,12 @@ const config: BotConfig = {
   ],
   discordToken: process.env.DISCORD_TOKEN || '',
   openaiApiKey: process.env.OPENAI_API_KEY || '',
-  redisUrl: process.env.REDIS_URL || 'redis://localhost:6379',
-  announcementChannelId: process.env.ANNOUNCEMENT_CHANNEL_ID || '1339371469666390192',
+  redisUrl: process.env.REDIS_URL || '',
+  announcementChannelId: process.env.ANNOUNCEMENT_CHANNEL_ID || '',
   botName: 'Computer',
   botPrefix: 'computer',
-  model: 'gpt-4',
-  temperature: 0.6,
+  model: 'gpt-5',
+  temperature: 1,
   systemPrompt: `You are 'Computer', the voice assistant from Star Trek.
 Only answer questions related to the mobile game Star Trek Fleet Command (STFC).
 Do not answer general Star Trek trivia, real-world questions, or anything outside the scope of the game.`,
