@@ -1,0 +1,15 @@
+{
+  "commands": {
+    "help": "ayuda",
+    "version": "versión"
+  },
+  "help": {
+    "message": "**🧠 Ayuda de %{botName}**\nSoy tu asistente para **Star Trek Fleet Command (STFC)**.\n\n**Cómo usarme:**\n• Comienza cualquier mensaje con `%{prefix}`\n• Luego haz una pregunta sobre STFC — oficiales, naves, tripulación, misiones, eventos y más.\n\n**Funciones de memoria:**\n• Puedo recordar nuestra conversación para preguntas de seguimiento\n• El contexto dura 1 hora o hasta que cambies de tema\n\n**Ejemplos:**\n• `%{prefix} ¿cuál es la mejor tripulación para armadas borg?`\n• `%{prefix} basándote en eso, ¿qué hay de Keenser?`\n• `%{prefix} versión` - Muestra información de la versión\n\n**Límites:**\n• No responderé a preguntas que no sean de STFC\n• El lenguaje ofensivo o fuera de tema está bloqueado\n\n_Larga vida y prosperidad. 🖖_"
+  },
+  "errors": {
+    "empty_question": "Por favor, haz una pregunta relacionada con Star Trek Fleet Command.",
+    "abusive": "Ese lenguaje es inapropiado. Consulta bloqueada.",
+    "not_stfc": "Esa consulta está fuera de mi directiva. Solo puedo ayudar con Star Trek Fleet Command.",
+    "general": "Se produjo un error al acceder a los archivos de la Flota Estelar."
+  }
+}

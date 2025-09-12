@@ -1,14 +1,15 @@
-import { Message, TextBasedChannel } from 'discord.js';
+import {Message, TextBasedChannel} from 'discord.js';
+import LocaleService from '../services/localeService';
 import OpenAIService from '../services/OpenAIService';
 import LoggerService from '../services/LoggerService';
 import MemoryService from '../services/MemoryService';
-import { isAbusive } from '../utils/abuseFilter';
-import { isSTFCRelated } from '../utils/stfcValidator';
-import { isFollowUpQuestion, getFollowUpQuestion } from '../utils/conversationUtils';
-import { checkEasterEggs } from '../utils/easterEggs';
-import { getVersionInfo } from '../utils/version';
+import {isAbusive} from '../utils/abuseFilter';
+import {isSTFCRelated} from '../utils/stfcValidator';
+import {isFollowUpQuestion, getFollowUpQuestion} from '../utils/conversationUtils';
+import {checkEasterEggs} from '../utils/easterEggs';
+import {getVersionInfo} from '../utils/version';
 import config from '../config';
-import { Anonymizer } from '../services/Anonymizer';
+import {Anonymizer} from '../services/Anonymizer';
 
 export async function handleMessageCreate(message: Message): Promise<void> {
   const logger = LoggerService.getInstance();
@@ -18,8 +19,15 @@ export async function handleMessageCreate(message: Message): Promise<void> {
   try {
     if (message.author.bot || !message.content.toLowerCase().startsWith(config.botPrefix)) return;
 
-    const userInput = message.content.slice(config.botPrefix.length).trim();
-    const normalizedInput = userInput.toLowerCase();
+    let userInput = message.content.slice(config.botPrefix.length).trim();
+    let normalizedInput = userInput.toLowerCase();
+
+    // 🌍 Detect locale
+    const userLocale = LocaleService.detectLocale(userInput);
+    if (!config.supportedLocales.includes(userLocale)) {
+      await message.reply(LocaleService.getBackupResponse());
+      return;
+    }
 
     const userId = message.author.id;
     const userTag = message.author.tag;

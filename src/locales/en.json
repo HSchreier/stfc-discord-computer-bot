@@ -1,0 +1,15 @@
+{
+  "commands": {
+    "help": "help",
+    "version": "version"
+  },
+  "help": {
+    "message": "**🧠 %{botName} Help**\nI'm your assistant for **Star Trek Fleet Command (STFC)**.\n\n**How to use me:**\n• Start any message with `%{prefix}`\n• Then ask a question about STFC — officers, ships, crew, missions, events, and more!\n\n**Memory Features:**\n• I can remember our conversation for follow-up questions\n• Context lasts for 1 hour or until you change topics\n\n**Examples:**\n• `%{prefix} what's the best crew for borg armadas?`\n• `%{prefix} based on that, what about Keenser?`\n• `%{prefix} version` - Show version information\n\n**Limits:**\n• I won't answer non-STFC questions\n• Abusive or off-topic language is blocked\n\n_Live long and prosper. 🖖_"
+  },
+  "errors": {
+    "empty_question": "Please ask a question related to Star Trek Fleet Command.",
+    "abusive": "That language is inappropriate. Query blocked.",
+    "not_stfc": "That query is outside my current directive. I can only assist with Star Trek Fleet Command.",
+    "general": "An error occurred while accessing Starfleet archives."
+  }
+}
