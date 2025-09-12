@@ -31,10 +31,10 @@ The bot automatically detects the language of your question based on the input:
 **Example commands in different languages:**
 
 ```text
-computer help          # English
-computer hilfe         # German
-computer ayuda         # Spanish
-computer допомога       # Ukrainian
+computer STFC help          # English
+computer STFC hilfe         # German
+computer STFC ayuda         # Spanish
+computer STFC допомога       # Ukrainian
 ```
 
 ## 🛣️ Roadmap
