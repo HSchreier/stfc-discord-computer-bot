@@ -53,7 +53,7 @@ export async function handleMessageCreate(message: Message): Promise<void> {
         "I'm your assistant for **Star Trek Fleet Command (STFC)**.\n\n" +
         "**How to use me:**\n" +
         `• Start any message with \`${config.botPrefix}\`\n` +
-        "• Then ask a question about STFC — officers, ships, crew, missions, events, and more!\n\n" +
+        "---> LIKE: Computer + STFC + Question in your Langugae!\n\n" +
         "**Memory Features:**\n" +
         "• I can remember our conversation for follow-up questions\n" +
         "• Context lasts for 1 hour or until you change topics\n\n" +

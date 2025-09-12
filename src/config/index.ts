@@ -15,13 +15,13 @@ function requireEnv(name: string): string {
 }
 
 const config: BotConfig = {
-  version: '1.1.0',
+  version: '2.0.0',
   roadmap: [
     { version: '1.1', status: '✅ Released', features: 'Modularization, Service Layers, Redis Support' },
     { version: '1.2', status: '🛠️ In Progress', features: 'Observability & Logs (JSONL/PostgreSQL, Admin Metrics)' },
-    { version: '1.3', status: '📅 Planned', features: 'Data Lake Integration (Parquet/S3, DuckDB)' },
-    { version: '1.4', status: '📅 Planned', features: 'Adaptive Memory & Learning (Redis, Summarization)' },
-    { version: '1.5', status: '📅 Planned', features: 'Internationalization (Multilingual Support)' }
+    { version: '2', status: '🛠️ In Progress', features: 'Internationalization (Languages supported: EN,DE,ES,UK(Ukranian)' },
+    { version: '2.1', status: '📅 Planned', features: 'Data Lake Integration (Parquet/S3, DuckDB)' },
+    { version: '2.1.2', status: '📅 Planned', features: 'Adaptive Memory & Learning (Redis, Summarization)' }
   ],
 
   // 🔑 Environment variables
