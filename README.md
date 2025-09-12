@@ -43,7 +43,7 @@ computer STFC допомога       # Ukrainian
 |---------|--------|----------|
 | 1.1 | ✅ Released | Modularization, Service Layers, Redis Support |
 | 1.2 | 🛠️ In Progress | Observability & Logs |
-| 2.0| 📅 Planned | Internationalization |
+| 2.0| 🛠️ In Progress | Internationalization |
 | 2.1 | 📅 Planned | Data Lake Integration |
 | 2.1.2 | 📅 Planned | Adaptive Memory & Learning |
 
